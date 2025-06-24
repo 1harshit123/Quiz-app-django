@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quiz',
-    'tailwindcss',
-    'tailwind'
+    'tailwind',
+    'theme'
+    
 ]
-TAILWIND_APP_NAME = 'tailwindcss'
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
