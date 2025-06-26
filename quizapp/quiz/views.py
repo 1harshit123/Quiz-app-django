@@ -18,4 +18,5 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 def home(request):
-    return render('base.html')
+    return render(request, 'base.html')
+
