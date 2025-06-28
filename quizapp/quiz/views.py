@@ -1,5 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import SignUpForm
 
@@ -17,6 +18,22 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
+def login(request,  *args, **kwargs):
+    if request.method == 'POST':
+        username_or_email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username_or_email, password=password)
+        if user is None:
+            messages.error(request, 'The user is not registered')
+        else:
+            login(request, user)
+            return redirect('home')
+    return render(request, 'registration/login.html')
 def home(request):
     return render(request, 'base.html')
+
+
+
+
 

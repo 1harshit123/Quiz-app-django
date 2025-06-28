@@ -1,0 +1,67 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% tailwind_css %}
+</head>
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="bg-gray-100 min-h-screen flex flex-col">
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">login</h1>
+
+                <input 
+                    type="email"
+                    class="block border border-gray-300 w-full p-3 rounded mb-4"
+                    name="email"
+                    placeholder="Email" 
+                    value="{{ form.email.value|default_if_none:'' }}"
+                />
+
+                <input 
+                    type="password"
+                    class="block border border-gray-300 w-full p-3 rounded mb-4"
+                    name="password"
+                    placeholder="Password" 
+                    value="{{ form.password.value|default_if_none:'' }}"
+                    autocomplete="off"
+                />
+
+                {% if form.errors %}
+                    <div class="text-red-600 mb-4">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <button
+                    type="submit"
+                    class="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"
+                >
+                    Login
+                </button>
+            </div>
+            <div class="text-gray-700 mt-6">
+                Don't have an account? 
+                <a class="no-underline border-b border-blue-500 text-blue-500" href="{% url 'signup' %}">
+                    Register here!
+                </a>.
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
