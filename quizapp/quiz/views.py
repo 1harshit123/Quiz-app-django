@@ -19,7 +19,7 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-def login(request,  *args, **kwargs):
+def user_login(request,  *args, **kwargs):
     if request.method == 'POST':
         username_or_email = request.POST.get('email')
         password = request.POST.get('password')
