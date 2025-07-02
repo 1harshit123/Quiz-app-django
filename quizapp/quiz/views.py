@@ -30,8 +30,13 @@ def user_login(request,  *args, **kwargs):
             login(request, user)
             return redirect('home')
     return render(request, 'registration/login.html')
+
+
 def home(request):
     return render(request, 'base.html')
+
+def create_quiz(request):
+    return render(request, 'create_quiz.html')
 
 
 

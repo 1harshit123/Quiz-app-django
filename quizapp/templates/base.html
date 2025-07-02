@@ -65,10 +65,15 @@
   </nav>
 
 
-  <!-- Make sure Tailwind and Flowbite CSS are loaded in your <head> -->
+ {% if request.path == '/' %}
+ <div onclick="window.location.href='{% url 'create_quiz' %}'" class="absolute mt-20 ml-6 bg-blue-500 rounded-lg shadow-md p-6 cursor-pointer">
+    <h1 class="text-black text-2xl font-bold text-center">Create Quiz</h1>
+  </div>
 
-  <div class="absolute mt-20 ml-6 bg-blue-500 rounded-lg shadow-md p-6 cursor-pointer">
-      <h1 class="text-black text-2xl font-bold text-center">Create Quiz</h1>
+ {% endif %}
+
+ <div>
+    {% block content %}{% endblock  %}
 </div>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
