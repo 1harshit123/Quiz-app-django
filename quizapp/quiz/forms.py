@@ -24,5 +24,5 @@ class SignUpForm(UserCreationForm):
             user.save()
         return user
     
-class Creatingquizform(forms.Form):
+# class Creatingquizform(forms.Form):
     
