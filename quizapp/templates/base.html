@@ -1,11 +1,41 @@
+{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8" />
+    <title>Django Tailwind Test</title>
+    {% tailwind_css %}
 </head>
-<body>
-  
+<body class="">
+  <nav class="w-full text-[#293325] px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="" alt="Logo" class="h-10 w-10 rounded-full">
+      <span class="text-xl font-bold">MyBrand</span>
+    </div>
+
+    <!-- Navigation links -->
+    <div class="hidden md:flex space-x-6">
+      <span class="hover:text-[#4CBB17] cursor-pointer">Home</span>
+      <span class="hover:text-[#4CBB17] cursor-pointer">About</span>
+      <span class="hover:text-[#4CBB17] cursor-pointer">Contact</span>
+    </div>
+
+    <!-- Auth Buttons -->
+    <div class="flex space-x-4">
+      <button class="bg-[#4CBB17] hover:bg-[#48872B] text-white font-semibold py-1 px-4 rounded">
+        Sign Up
+      </button>
+      <button class="border border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white text-black font-semibold py-1 px-4 rounded">
+        Log In
+      </button>
+    </div>
+  </nav>
 </body>
 </html>
+
+
+// #293325
+// #39542C
+// #48872B
+// #4CBB17
