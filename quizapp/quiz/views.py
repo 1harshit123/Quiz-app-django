@@ -1,6 +1,7 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user_model
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import logout
 
 from .forms import SignUpForm
 
@@ -19,16 +20,37 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-def user_login(request,  *args, **kwargs):
+
+def user_login(request, *args, **kwargs):
     if request.method == 'POST':
         username_or_email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(request, username=username_or_email, password=password)
-        if user is None:
-            messages.error(request, 'The user is not registered')
+
+        User = get_user_model()
+        user = None
+
+        if '@' in username_or_email:
+            # Treat as email login
+            try:
+                user_obj = User.objects.get(email=username_or_email)
+                user = authenticate(request, username=user_obj.username, password=password)
+            except User.DoesNotExist:
+                messages.error(request, 'No user found with this email.')
+                return redirect('login')
+            except User.MultipleObjectsReturned:
+                messages.error(request, 'Multiple users found with this email. Please contact support.')
+                return redirect('login')
         else:
+            # Treat as username login
+            user = authenticate(request, username=username_or_email, password=password)
+
+        if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            messages.error(request, 'Invalid credentials. Please try again.')
+            return redirect('login')
+
     return render(request, 'registration/login.html')
 
 
@@ -38,6 +60,9 @@ def home(request):
 def create_quiz(request):
     return render(request, 'create_quiz.html')
 
+def logout_user(request):
+    logout(request)  # This logs out the user
+    return redirect('home')
 
 
 

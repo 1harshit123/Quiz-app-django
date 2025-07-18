@@ -6,7 +6,7 @@
     <title>Django Tailwind Test</title>
     {% tailwind_css %}
 </head>
-<body class="">
+<body>
   <nav class="w-full text-[#293325] px-6 py-4 flex justify-between items-center border-b">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
@@ -23,36 +23,48 @@
 
     <!-- Auth Buttons -->
     <div class="flex space-x-4">
-      <a href="{% url "signup" %}">
-        <button class="bg-[#4CBB17] hover:bg-[#48872B] text-white font-semibold py-1 px-4 rounded">
-        Sign Up
-      </button>
-      </a>
-      <a href="{% url "login" %}">
-          <button href="{% url "login" %}" class="border border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white text-black font-semibold py-1 px-4 rounded">
-        Log In
-      </button>
-      </a>
-      
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">
+          <button class="border border-red-500 hover:bg-red-500 hover:text-white text-red-600 font-semibold py-1 px-4 rounded">
+            Log Out
+          </button>
+        </a>
+      {% else %}
+        <a href="{% url 'signup' %}">
+          <button class="bg-[#4CBB17] hover:bg-[#48872B] text-white font-semibold py-1 px-4 rounded">
+            Sign Up
+          </button>
+        </a>
+        <a href="{% url 'login' %}">
+          <button class="border border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white text-black font-semibold py-1 px-4 rounded">
+            Log In
+          </button>
+        </a>
+      {% endif %}
     </div>
   </nav>
 
-
-  {% block quiz %}
-  
-  {% endblock quiz %}
+  <!-- Main Body -->
+  <div class="p-6">
+    {% if user.is_authenticated %}
+      <h2 class="text-xl font-bold mb-4">Create Your Quiz</h2>
+      <div class="flex gap-4">
+        <a href="{% url 'create_quiz' %}">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded">
+            Create Quiz
+          </button>
+        </a>
+        <a href="###">
+          <button class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded">
+            Create Quiz with AI
+          </button>
+        </a>
+      </div>
+    {% else %}
+      <p class="text-gray-700 mt-6">
+        You need to log in to access quiz creation features. Please sign up or log in to continue.
+      </p>
+    {% endif %}
+  </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-{% comment %} // #293325
-// #39542C
-// #48872B
-// #4CBB17 {% endcomment %}
