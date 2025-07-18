@@ -9,8 +9,6 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-600: oklch(57.7% 0.245 27.325);
-    --color-yellow-300: oklch(90.5% 0.182 98.111);
-    --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-blue-500: oklch(62.3% 0.214 259.815);
@@ -309,6 +307,10 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
+  .border-b-0 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 0px;
+  }
   .border-\[\#4CBB17\] {
     border-color: #4CBB17;
   }
@@ -318,23 +320,8 @@
   .border-gray-300 {
     border-color: var(--color-gray-300);
   }
-  .border-yellow-400 {
-    border-color: var(--color-yellow-400);
-  }
   .bg-\[\#4CBB17\] {
     background-color: #4CBB17;
-  }
-  .bg-\[\#4CBB178\] {
-    background-color: #4CBB178;
-  }
-  .bg-\[\#4CBB\] {
-    background-color: #4CBB;
-  }
-  .bg-\[\#\] {
-    background-color: #;
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
@@ -347,9 +334,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-yellow-400 {
-    background-color: var(--color-yellow-400);
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);
@@ -413,44 +397,8 @@
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
   }
-  .text-\[\#\#293325\] {
-    color: ##293325;
-  }
-  .text-\[\#4CB48B17\] {
-    color: #4CB48B17;
-  }
-  .text-\[\#4CB4887B17\] {
-    color: #4CB4887B17;
-  }
-  .text-\[\#4CB48872BB17\] {
-    color: #4CB48872BB17;
-  }
-  .text-\[\#4CB48872B\] {
-    color: #4CB48872B;
-  }
-  .text-\[\#4CBB17\] {
-    color: #4CBB17;
-  }
-  .text-\[\#4CBB\] {
-    color: #4CBB;
-  }
-  .text-\[\#68BA7F\] {
-    color: #68BA7F;
-  }
-  .text-\[\#68BA\] {
-    color: #68BA;
-  }
-  .text-\[\#39542C\] {
-    color: #39542C;
-  }
-  .text-\[\#48872B\] {
-    color: #48872B;
-  }
   .text-\[\#293325\] {
     color: #293325;
-  }
-  .text-\[\#\] {
-    color: #;
   }
   .text-black {
     color: var(--color-black);
@@ -466,9 +414,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .text-yellow-400 {
-    color: var(--color-yellow-400);
   }
   .no-underline {
     text-decoration-line: none;
@@ -493,28 +438,13 @@
     }
   }
   @media (hover: hover) {
-    .hover\:bg-yellow-300:hover {
-      background-color: var(--color-yellow-300);
-    }
-  }
-  @media (hover: hover) {
     .hover\:text-\[\#4CBB17\]:hover {
       color: #4CBB17;
     }
   }
   @media (hover: hover) {
-    .hover\:text-black:hover {
-      color: var(--color-black);
-    }
-  }
-  @media (hover: hover) {
     .hover\:text-white:hover {
       color: var(--color-white);
-    }
-  }
-  @media (hover: hover) {
-    .hover\:text-yellow-300:hover {
-      color: var(--color-yellow-300);
     }
   }
   .focus\:outline-none:focus {

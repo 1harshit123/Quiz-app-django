@@ -7,7 +7,7 @@
     {% tailwind_css %}
 </head>
 <body class="">
-  <nav class="w-full text-[#293325] px-6 py-4 flex justify-between items-center">
+  <nav class="w-full text-[#293325] px-6 py-4 flex justify-between items-center border-b">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
       <img src="" alt="Logo" class="h-10 w-10 rounded-full">
@@ -23,19 +23,36 @@
 
     <!-- Auth Buttons -->
     <div class="flex space-x-4">
-      <button class="bg-[#4CBB17] hover:bg-[#48872B] text-white font-semibold py-1 px-4 rounded">
+      <a href="{% url "signup" %}">
+        <button class="bg-[#4CBB17] hover:bg-[#48872B] text-white font-semibold py-1 px-4 rounded">
         Sign Up
       </button>
-      <button class="border border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white text-black font-semibold py-1 px-4 rounded">
+      </a>
+      <a href="{% url "login" %}">
+          <button href="{% url "login" %}" class="border border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white text-black font-semibold py-1 px-4 rounded">
         Log In
       </button>
+      </a>
+      
     </div>
   </nav>
+
+
+  {% block quiz %}
+  
+  {% endblock quiz %}
 </body>
 </html>
 
 
-// #293325
+
+
+
+
+
+
+
+{% comment %} // #293325
 // #39542C
 // #48872B
-// #4CBB17
+// #4CBB17 {% endcomment %}
