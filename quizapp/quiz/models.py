@@ -1,19 +1,24 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Quiz(models.Model):
     title = models.CharField(_("title of the quiz"), max_length=100)
-    decription = models.CharField(_("description of the quiz"), max_length=256)
-    created_at = models.ForeignKey("app.Model", verbose_name=_(""), on_delete=models.CASCADE)
-    no_of_question = models.CharField(_("How many question this quiz have"), max_length=50)
-    time_duration = models.DurationField(_("time duration"))
+    description = models.CharField(_("description of the quiz"), max_length=256) 
+    created_by = models.ForeignKey(User, verbose_name=_("Created by"), on_delete=models.CASCADE)  
+    no_of_question = models.IntegerField(_("How many questions this quiz have"))  
+    time_duration = models.IntegerField(_("time duration in minutes"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return f"{self.title}"
+    
+    class Meta:
+        verbose_name = _("Quiz")
+        verbose_name_plural = _("Quizzes")
     
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quize title"), on_delete=models.CASCADE)
