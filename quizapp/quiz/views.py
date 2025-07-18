@@ -30,7 +30,6 @@ def user_login(request, *args, **kwargs):
         user = None
 
         if '@' in username_or_email:
-            # Treat as email login
             try:
                 user_obj = User.objects.get(email=username_or_email)
                 user = authenticate(request, username=user_obj.username, password=password)
@@ -41,7 +40,6 @@ def user_login(request, *args, **kwargs):
                 messages.error(request, 'Multiple users found with this email. Please contact support.')
                 return redirect('login')
         else:
-            # Treat as username login
             user = authenticate(request, username=username_or_email, password=password)
 
         if user is not None:
