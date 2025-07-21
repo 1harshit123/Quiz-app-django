@@ -5,10 +5,8 @@
 {% endblock home_content %}
 
 {% block quiz %}
-<!-- Page-specific buttons and content go here -->
 <div class="p-6">
     <h1 class="text-2xl font-bold mb-6">Create Quiz</h1>
-    <!-- Your quiz creation form here -->
     <form method="post" class="space-y-4">
         {% csrf_token %}
         
@@ -44,5 +42,4 @@
         </div>
     </form>
 </div>
-<!-- No extra nav or buttons unless you include them here -->
 {% endblock quiz %}

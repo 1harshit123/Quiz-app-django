@@ -23,6 +23,23 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class CreateQuizForm(forms.Form):
+    title = forms.CharField(label='Quiz Title', max_length=100)
     
-# class Creatingquizform(forms.Form):
+    description = forms.CharField(label='Description')
+    
+    num_questions = forms.IntegerField(
+        label='Number of Questions',
+        min_value=1,
+        max_value=50
+    )
+    
+    duration = forms.IntegerField(
+        label='Time Duration (minutes)',
+        min_value=1,
+        max_value=180
+    )
+
     
